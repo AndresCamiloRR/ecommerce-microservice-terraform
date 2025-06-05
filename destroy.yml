@@ -17,11 +17,11 @@ variables:
     value: 'MiServiceConnectionAzure'
     
 stages:
-  - stage: TerraformDeploy
+  - stage: TerraformDestroy
     displayName: 'Terraform en ${{ parameters.environment }}'
     jobs:
       - job: apply
-        displayName: 'Deploy ${{ parameters.environment }}'
+        displayName: 'Destroy ${{ parameters.environment }}'
         pool:
           vmImage: 'ubuntu-latest'
         steps:
@@ -31,15 +31,6 @@ stages:
           - task: TerraformTask@5
             inputs:
               provider: 'azurerm'
-              command: 'init'
-              workingDirectory: 'terraform/envs/${{ parameters.environment }}'
-              backendServiceArm: 'ecommerce-terraform-sc'
-              backendAzureRmResourceGroupName: 'tfstate-rg'
-              backendAzureRmStorageAccountName: 'tfstateaccicesi'
-              backendAzureRmContainerName: 'tfstate'
-              backendAzureRmKey: 'dev.terraform.tfstate'
-          - task: TerraformTask@5
-            inputs:
-              provider: 'azurerm'
               command: 'destroy'
               workingDirectory: 'terraform/envs/${{ parameters.environment }}'
+              environmentServiceNameAzureRM: 'ecommerce-terraform-sc'
