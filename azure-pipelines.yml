@@ -33,6 +33,11 @@ stages:
               provider: 'azurerm'
               command: 'init'
               workingDirectory: 'terraform/envs/${{ parameters.environment }}'
+              backendServiceArm: 'ecommerce-terraform-sc'
+              backendAzureRmResourceGroupName: 'tfstate-rg'
+              backendAzureRmStorageAccountName: 'tfstateaccicesi'
+              backendAzureRmContainerName: 'tfstate'
+              backendAzureRmKey: 'dev.terraform.tfstate'
           
           - task: TerraformTask@5
             inputs:
