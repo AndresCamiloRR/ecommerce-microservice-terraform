@@ -33,7 +33,6 @@ stages:
               provider: 'azurerm'
               command: 'init'
               workingDirectory: 'terraform/envs/${{ parameters.environment }}'
-              backendServiceArm: 'ecommerce-terraform-sc'
           
           - task: TerraformTask@5
             inputs:
