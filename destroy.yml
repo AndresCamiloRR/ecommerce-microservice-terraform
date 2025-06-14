@@ -37,7 +37,7 @@ stages:
               backendAzureRmResourceGroupName: 'tfstate-rg'
               backendAzureRmStorageAccountName: 'tfstateaccicesi'
               backendAzureRmContainerName: 'tfstate'
-              backendAzureRmKey: 'dev.terraform.tfstate'
+              backendAzureRmKey: '${{ parameters.environment }}.terraform.tfstate'
           - task: TerraformTask@5
             inputs:
               provider: 'azurerm'
