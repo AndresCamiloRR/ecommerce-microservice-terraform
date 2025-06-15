@@ -12,7 +12,6 @@ parameters:
       - prod
 
 variables:
-  # Nombre de tu Service Connection en Azure DevOps
   - name: azureSubscription
     value: 'MiServiceConnectionAzure'
     
