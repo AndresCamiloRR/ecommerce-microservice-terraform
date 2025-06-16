@@ -22,7 +22,7 @@ stages:
       - job: apply
         displayName: 'Deploy ${{ parameters.environment }}'
         pool:
-          vmImage: 'ubuntu-latest'
+          name: 'Default'
         steps:
           - task: TerraformInstaller@1
             inputs:
